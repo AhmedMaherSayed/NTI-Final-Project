@@ -1,0 +1,42 @@
+
+<div class="container">
+    <h2 class="my-4">Edit Your Data</h2>
+    <form action="" class="mt-5" [formGroup]="loginForm" (ngSubmit)="handleEdit()">
+      <div class="alert alert-danger" *ngIf="errorMsg">
+        {{ errorMsg }}
+      </div>
+  
+      <div class="my-4">
+        <label for="">Your Name</label>
+        <input class="form-control" type="text" formControlName="name" />
+      </div>
+      <div class="alert alert-danger" *ngIf="userData.name.invalid && (userData.name.touched || isSubmit)">
+        <div *ngIf="userData.name.errors?.['required']">Name is required</div>
+      </div>
+  
+  
+      <div class="my-4">
+        <label for="">Your Age</label>
+        <input class="form-control" type="number" formControlName="age"/>
+      </div>
+      <div class="alert alert-danger" *ngIf="userData.age.invalid && (userData.age.touched || isSubmit)">
+        <div *ngIf="userData.age.errors?.['required']">Age is required</div>
+      </div>
+  
+  
+      <div class="my-4">
+        <label for="">Your Email</label>
+        <input class="form-control" type="email" formControlName="email" (input)="errorMsg = ''" />
+      </div>
+      <div class="alert alert-danger" *ngIf="userData.email.invalid && (userData.email.touched || isSubmit)">
+        <div *ngIf="userData.email.errors?.['required']">Email is required</div>
+        <div *ngIf="userData.email.errors?.['email']">Email is Invalid</div>
+      </div>
+  
+  
+      <div class="position-relative">
+        <button class="btn btn-primary">Edit Data</button>
+      </div>
+    </form>
+  </div>
+  

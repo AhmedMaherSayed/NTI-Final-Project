@@ -1,0 +1,32 @@
+<table class="table table-bounded mx-auto">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Controls</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let user of users let i = index">
+        <td>{{ user._id }}</td>
+        <td>{{ user.name }}</td>
+        <td [ngClass]="{ 'text-success': user.status, 'text-danger': !user.status }">
+          {{ user.status ? "activated" : "deactivated" }}
+        </td>
+        <td *ngIf="user._id != global.user._id; else admin">
+          <a class="btn btn-primary mx-2" routerLink="/single-user/{{user._id}}">Show User</a>
+          <a class="btn btn-success mx-2" (click)="handleChangeStatus(user._id, i, 'activate')"
+            *ngIf="!user.status; else deactivate">activate</a>
+          <ng-template #deactivate>
+            <a class="btn btn-danger mx-2" (click)="handleChangeStatus(user._id, i, 'deactivate')">deactivate</a>
+          </ng-template>
+          <a class="btn btn-warning mx-2" (click)="handleDeleteUser(user._id, i)">Delete</a>
+        </td>
+        <ng-template #admin>
+          <td class="text-light bg-dark text-center">Your Account..</td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+  

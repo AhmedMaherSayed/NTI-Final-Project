@@ -1,0 +1,23 @@
+<table class="table table-bounded mx-auto">
+    <thead>
+      <tr class="bg-warning">
+        <th>ID</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Controls</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let product of products let i = index" class="bg-light">
+        <td>{{ product._id }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price }} </td>
+        <td>
+          <a class="btn btn-success mx-2" routerLink="/singleProduct/{{product._id}}">Show</a>
+          <a class="btn btn-danger ms-5" (click)="handleDeleteProduct(product._id, i)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  

@@ -1,0 +1,59 @@
+<div class="container">
+    <form action="" [formGroup]="productForm" (ngSubmit)="addProduct()" class="mt-5">
+      <h2>Add New Product</h2>
+      <div class="mb-3">
+        <label for="exampleInputImage1" class="form-label">Image Of Product :</label>
+        <input class="form-control w-100" type="file" (input)="handleImage(productData.image)" formControlName="image"/>
+        <div class="alert alert-danger" *ngIf="isSubmit && productData.image?.invalid">
+          <div *ngIf="productData.image?.errors?.['required']">
+            Image Is Required
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="mb-3">
+        <label for="exampleInputTitle1" class="form-label">Title Of Product</label>
+        <input class="form-control w-100" type="text" formControlName="title"/>
+        <div class="alert alert-danger" *ngIf="isSubmit && productData.title?.invalid">
+          <div *ngIf="productData.title?.errors?.['required']">
+            Title Is Required
+          </div>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="exampleInputContent1" class="form-label">Content Of Product</label>
+        <input class="form-control w-100" type="text" formControlName="content"/>
+        <div class="alert alert-danger" *ngIf="isSubmit && productData.content?.invalid">
+          <div *ngIf="productData.content?.errors?.['required']">
+            Content Is Required
+          </div>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="exampleInputPrice1" class="form-label">Price Of Product</label>
+        <input class="form-control w-100" type="number" formControlName="price"/>
+        <div class="alert alert-danger" *ngIf="isSubmit && productData.price?.invalid">
+          <div *ngIf="productData.price?.errors?.['required']">
+            Price Is Required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputCategory1" class="form-label">Category Of Product</label>
+        <input class="form-control w-100" type="text" formControlName="category">
+        <div class="alert alert-danger" *ngIf="isSubmit && productData.category?.invalid">
+          <div *ngIf="productData.category?.errors?.['required']">
+            Category Is Required
+          </div>
+        </div>
+      </div>
+  
+      <div class="position-relative">
+        <button class="btn btn-primary">Add Product</button>
+      </div>
+    </form>
+  </div>
+  

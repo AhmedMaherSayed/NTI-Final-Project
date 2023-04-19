@@ -1,0 +1,20 @@
+<table class="table table-bounded mx-auto">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Controls</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let category of categories let i = index" >
+        <td>{{ category._id }}</td>
+        <td>{{ category.name }}</td>
+        <td>
+          <a class="btn btn-primary mx-2" routerLink="/products" [queryParams]="{'category': category.name}">products</a>
+          <a class="btn btn-warning mx-2" (click)="handleDeleteCategory(category._id, i)">remove</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

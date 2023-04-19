@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" routerLink="">Ecommerce Site</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse  navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="" routerLinkActive="text-danger"
+              [routerLinkActiveOptions]="{ exact: true }">Home</a>
+          </li>
+          <li class="nav-item me-2" *ngIf="isAdmin()">
+            <a class="nav-link active" aria-current="page" routerLink="product/add" routerLinkActive="text-danger"
+              [routerLinkActiveOptions]="{ exact: true }">Add Product</a>
+          </li>
+          <li class="nav-item me-2" *ngIf="global.user?.userLevel == 'admin'">
+            <a class="nav-link active" aria-current="page" routerLink="dashboard" routerLinkActive="text-danger"
+              [routerLinkActiveOptions]="{ exact: true }">dashboard</a>
+          </li>
+          <li class="nav-item me-2" >
+            <a class="nav-link active" aria-current="page" routerLink="/products" routerLinkActive="text-danger"
+              [routerLinkActiveOptions]="{exact: true}">Products</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="nav-link active" aria-current="page" routerLink="edit-user" *ngIf="global.loginFlag"
+              routerLinkActive="text-danger" [routerLinkActiveOptions]="{ exact: true }">Edit</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="nav-link active" aria-current="page" routerLink="login" *ngIf="!global.loginFlag"
+              routerLinkActive="text-danger" [routerLinkActiveOptions]="{ exact: true }">Login</a>
+          </li>
+          <li class="nav-item me-2">
+            <a class="nav-link active" aria-current="page" routerLink="/register" *ngIf="!global.loginFlag"
+              routerLinkActive="text-danger" [routerLinkActiveOptions]="{ exact: true }">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active bg-danger rounded" aria-current="page" *ngIf="global.loginFlag" routerLink=""
+              (click)="handleLogout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
